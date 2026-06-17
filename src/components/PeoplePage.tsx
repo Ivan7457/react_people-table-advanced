@@ -47,9 +47,11 @@ export const PeoplePage = () => {
     const valueB = b[sortBy as keyof Person];
 
     if (typeof valueA === 'string' && typeof valueB === 'string') {
-      return sortOrder === 'desc'
-        ? valueA.localeCompare(valueB)
-        : valueB.localeCompare(valueA);
+      if (sortOrder === 'desc') {
+        return valueB.localeCompare(valueA);
+      }
+
+      return valueA.localeCompare(valueB);
     }
 
     if (typeof valueA === 'number' && typeof valueB === 'number') {
